@@ -1,5 +1,5 @@
-#include "Balrog.h"
 #include <iostream>
+#include <string>
 namespace cs_creature{
 
 
@@ -11,16 +11,16 @@ std::string Balrog::getSpecies() const
 
 int Balrog::getDamage() const
 {
-    int damage1 = Demon::getDamage(), damagehold = 0;
-    cout << "The " << getSpecies() << " attacks for " << damage1 << " points!" << endl;
-    if(rand() % 4 == 0)
-    {
-        cout << "Demonic attack inflicts 50 additional damage points!" << endl;
-        damagehold = 50;
-    }
-    int damage2 = (rand() % Demon::getStrength()) + 1;
-    cout <<  "Balrog speed attack inflicts " << damage2 << " additional damage points!" << endl;
-    int damage = damage1 + damagehold + damage2;
-    return damage;
+    int damage = Creature::getDamage();
+     cout << "The " << getSpecies() << " attacks for " << damage <<" points!" << endl;
+    int damage2 = (rand() % Creature::getStrength()) + 1;
+    cout << "balrog speed attack inflicts " << damage2 << " additional damage points!" << endl;
+
+    if (rand() % 100 * 0.01 < DEMONIC_ATTACK_PROBABILITY) {
+    damage = damage + DEMONIC_BONUS_DAMAGE;
+cout << "Demonic attack inflicts " << DEMONIC_BONUS_DAMAGE << " additional damage points!" << endl;
+}
+
+    return damage += damage2;
 }
 }
