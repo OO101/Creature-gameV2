@@ -1,5 +1,6 @@
 #include "Human.h"
 #include <iostream>
+#include <string>
 using namespace std;
 namespace cs_creature{
 
@@ -10,8 +11,8 @@ string Human::getSpecies() const
 }
 int Human::getDamage() const
 {
-    int damage = Human::getDamage();
-    cout <<" " << getSpecies() << " attacks for " << damage << " points!" << endl;
+    int damage = Creature::getDamage();
+    cout <<"The " << getSpecies() << " attacks for " << damage << " points!" << endl;
     return damage;
 }
 
